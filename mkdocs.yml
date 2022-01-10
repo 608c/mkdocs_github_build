@@ -1,0 +1,26 @@
+site_name: MkDocs Build Tester Repo
+docs_dir: src
+site_dir: _site
+# repo_url:
+# repo_name:
+
+site_description: Noodling around with GitHub build processes...
+# site_author:
+# copyright:
+
+# https://www.mkdocs.org/user-guide/configuration/#extra
+# extra:
+
+# https://www.mkdocs.org/dev-guide/themes/
+theme:
+    name: material
+    features:
+    - navigation.indexes
+    - navigation.top
+    font:
+      text: Public Sans
+    palette:
+      scheme: musicat
+
+copyright: No rights reserved.
+
