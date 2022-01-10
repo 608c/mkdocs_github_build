@@ -18,7 +18,7 @@ theme:
     - navigation.indexes
     - navigation.top
     font:
-      text: Public Sans
+      text: Inter
     palette:
       scheme: musicat
 
