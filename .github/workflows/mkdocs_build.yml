@@ -1,4 +1,4 @@
-# https://github.com/marketplace/actions/deploy-mkdocs
+# https://squidfunk.github.io/mkdocs-material/publishing-your-site/#with-github-actions
 name: Publish docs via GitHub Pages
 on:
   push:
@@ -6,23 +6,12 @@ on:
       - main
 
 jobs:
-  build:
-    name: Deploy docs
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main
-        uses: actions/checkout@v2
-
-      - name: Build Static Site
-        uses: mhausenblas/mkdocs-deploy-gh-pages@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # the below isn't working because of this bug:
-          # https://github.com/mhausenblas/mkdocs-deploy-gh-pages/issues/107
-          # since my test here uses 'src' instead of 'docs' for the source files.
-          # ...
-          # But it works just to put a CNAME file in src too
-          # CUSTOM_DOMAIN: mkdocs-test.608c.dev
-          CONFIG_FILE: mkdocs.yml
-          # EXTRA_PACKAGES: build-base
-          # REQUIREMENTS: folder/requirements.txt
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - run: pip install mkdocs-material 
+      - run: mkdocs gh-deploy --force
